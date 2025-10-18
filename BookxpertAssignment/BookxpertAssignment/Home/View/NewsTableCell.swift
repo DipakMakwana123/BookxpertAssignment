@@ -30,10 +30,10 @@ class NewsTableCell: UITableViewCell {
     /// - Parameter article: The article to display.
     func configure(with article: Article) {
         titleLable?.text = article.title ?? "No Title"
-        subtitleLable?.text = article.description ?? "No Description"
+        subtitleLable?.text = article.author ?? "No Author"
         titleLable?.numberOfLines = 2
-        subtitleLable?.numberOfLines = 2
-       let placeholder = UIImage(named: "placeholder.png")
+        subtitleLable?.numberOfLines = 1
+        let placeholder = UIImage(named: "placeholder.png")
         let urlString = article.urlToImage ?? ""
         let url = URL(string: urlString)
 

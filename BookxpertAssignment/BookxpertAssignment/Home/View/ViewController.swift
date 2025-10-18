@@ -6,22 +6,41 @@
 //
 
 import UIKit
+import Foundation
 
 class ViewController: UIViewController {
 
+    private let refreshControl = UIRefreshControl()
     private var viewModel: NewsViewModel = .init()
     @IBOutlet weak var tableView: UITableView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         configureTable()
-        Task {
-            await viewModel.fetchNews()
-            await MainActor.run { self.tableView.reloadData() }
+
+        // Preload cached articles so UI shows immediately when offline
+        if let cached = ArticleCache.load() {
+            self.viewModel.articles = cached.articles ?? []
+            self.tableView.reloadData()
         }
+
+        // Then try to fetch fresh data
+        loadData()
         // Do any additional setup after loading the view.
     }
 
+    private func loadData() {
+        Task {
+            await viewModel.fetchNews()
+            await MainActor.run {
+                if self.viewModel.articles.isEmpty, let cached = ArticleCache.load() {
+                    self.viewModel.articles = cached.articles ?? []
+                }
+                self.tableView.reloadData()
+                if self.refreshControl.isRefreshing { self.refreshControl.endRefreshing() }
+            }
+        }
+    }
     private func configureTable() {
         tableView.dataSource = self
         tableView.delegate = self
@@ -31,11 +50,18 @@ class ViewController: UIViewController {
         if let _ = Bundle.main.path(forResource: "NewsTableCell", ofType: "nib") {
             let nib = UINib(nibName: "NewsTableCell", bundle: nil)
             tableView.register(nib, forCellReuseIdentifier: "NewsTableCell")
+        }
+        // Pull to refresh
+        refreshControl.addTarget(self, action: #selector(handleRefresh), for: .valueChanged)
+        if #available(iOS 10.0, *) {
+            tableView.refreshControl = refreshControl
         } else {
-            tableView.register(NewsTableCell.self, forCellReuseIdentifier: "NewsTableCell")
+            tableView.addSubview(refreshControl)
         }
     }
-
+    @objc private func handleRefresh() {
+        loadData()
+    }
 }
 
 extension ViewController: UITableViewDataSource {

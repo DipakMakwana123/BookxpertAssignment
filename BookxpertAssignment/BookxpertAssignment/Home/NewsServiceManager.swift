@@ -34,6 +34,8 @@ struct NewsServiceManager: NewsServiceManagerProtocol {
 
     func fetchNews() async -> NewsResponse?   {
         guard let url = newsURLComponents().url else {
+            // Fall back to cache if URL can't be built
+            if let cached = ArticleCache.load() { return cached }
             return nil
         }
         print("URL:", url.absoluteString)
@@ -41,6 +43,8 @@ struct NewsServiceManager: NewsServiceManagerProtocol {
         do {
             let data = try await networkManager.fetchData(url)
             let res = try NewsDecoding.decodeResponse(from: data)
+            // Persist latest successful response for offline use
+            ArticleCache.save(res)
             return res
         }
         catch let DecodingError.dataCorrupted(context) {
@@ -57,6 +61,10 @@ struct NewsServiceManager: NewsServiceManagerProtocol {
         }
         catch {
             print("Other error:", error)
+        }
+        // On any error, try returning cached data
+        if let cached = ArticleCache.load() {
+            return cached
         }
         return nil
     }
