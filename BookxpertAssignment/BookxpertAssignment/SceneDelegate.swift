@@ -13,11 +13,48 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
-        // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
-        // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-        guard let _ = (scene as? UIWindowScene) else { return }
+        guard let windowScene = (scene as? UIWindowScene) else { return }
+
+        let window = UIWindow(windowScene: windowScene)
+        // Instantiate News VC
+        configureTabView(window)
     }
+
+    private func configureTabView(_ window: UIWindow) {
+        let newsVC: ViewController
+        if let storyboardName = Bundle.main.object(forInfoDictionaryKey: "UIMainStoryboardFile") as? String,
+           let storyboard = try? UIStoryboard(name: storyboardName, bundle: nil),
+           let initial = storyboard.instantiateInitialViewController() {
+            // Try to find ViewController from storyboard hierarchy
+            if let nav = initial as? UINavigationController, let root = nav.viewControllers.first as? ViewController {
+                newsVC = root
+            } else if let root = initial as? ViewController {
+                newsVC = root
+            } else {
+                newsVC = ViewController(nibName: nil, bundle: nil)
+            }
+        } else {
+            newsVC = ViewController(nibName: nil, bundle: nil)
+        }
+        newsVC.title = "News"
+        newsVC.tabBarItem = UITabBarItem(title: "News", image: UIImage(systemName: "newspaper"), selectedImage: UIImage(systemName: "newspaper.fill"))
+
+        // Bookmark VC
+        let bookmarkVC = BookmarkViewController(viewModel: .init())
+        bookmarkVC.title = "Bookmark"
+        bookmarkVC.tabBarItem = UITabBarItem(title: "Bookmark", image: UIImage(systemName: "bookmark"), selectedImage: UIImage(systemName: "bookmark.fill"))
+
+        let newsNav = UINavigationController(rootViewController: newsVC)
+        let bookmarkNav = UINavigationController(rootViewController: bookmarkVC)
+
+        let tab = UITabBarController()
+        tab.viewControllers = [newsNav, bookmarkNav]
+
+        window.rootViewController = tab
+        self.window = window
+        window.makeKeyAndVisible()
+    }
+
 
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.
@@ -47,7 +84,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // to restore the scene back to its current state.
 
         // Save changes in the application's managed object context when the application transitions to the background.
-        (UIApplication.shared.delegate as? AppDelegate)?.saveContext()
+        NewsCacheStore.shared.saveContext()
+       // (UIApplication.shared.delegate as? AppDelegate)?.saveContext()
     }
 
 

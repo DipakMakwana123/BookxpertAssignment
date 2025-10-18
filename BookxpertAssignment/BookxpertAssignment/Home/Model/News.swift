@@ -1,29 +1,30 @@
 import Foundation
 
 /// Root response for NewsAPI "everything" endpoint
-public struct NewsResponse: Codable, Equatable {
+struct NewsResponse: Codable, Equatable {
     public let status: String?
     public let totalResults: Int?
     public let articles: [Article]?
 }
 
 /// An individual article from NewsAPI
-public struct Article: Codable, Equatable, Identifiable {
+struct Article: Codable, Equatable, Identifiable {
     // Provide a stable id synthesized from url (unique per article in NewsAPI)
     public var id: String { url ?? UUID().uuidString }
 
   //  public let source: Source
-    public let author: String?
-    public let title: String?
-    public let description: String?
-    public let url: String?
-    public let urlToImage: String?
+    let author: String?
+    let title: String?
+   // let description: String?
+    let url: String?
+    let urlToImage: String?
+    var isBookmarked: Bool? = false
 }
 
 
 // MARK: - JSON Decoding Helpers
 
-public enum NewsDecoding {
+enum NewsDecoding {
     /// Shared JSONDecoder configured for NewsAPI date format (ISO8601 with fractional seconds)
     public static var decoder: JSONDecoder = {
         let decoder = JSONDecoder()
@@ -48,7 +49,7 @@ public enum NewsDecoding {
     }()
 
     /// Decode a NewsResponse from raw Data
-    public static func decodeResponse(from data: Data) throws -> NewsResponse {
+    static func decodeResponse(from data: Data) throws -> NewsResponse {
         try decoder.decode(NewsResponse.self, from: data)
     }
 }

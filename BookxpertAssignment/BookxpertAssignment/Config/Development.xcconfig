@@ -10,6 +10,6 @@
 
 // TODO: to make app workable , i have to commit this files , but generally it is bypass in code push 
 API_BASE_URL = newsapi.org
-NEWS_API_KEY = 44555e8fa8b34d0381936beb2368ffd2
+NEWS_API_KEY = 14df3eb25f7249e28c44cb592c605f26
 ENVIRONMENT = Development
 

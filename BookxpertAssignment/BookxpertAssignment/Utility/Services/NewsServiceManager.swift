@@ -8,7 +8,7 @@ import Combine
 import Foundation
 
 protocol NewsServiceManagerProtocol {
-    func fetchNews() async -> NewsResponse?
+    func fetchNews() async throws -> NewsResponse?  
 }
 
 struct NewsServiceManager: NewsServiceManagerProtocol {
@@ -32,10 +32,16 @@ struct NewsServiceManager: NewsServiceManagerProtocol {
         return components
     }
 
-    func fetchNews() async -> NewsResponse?   {
+    func fetchNews() async throws -> NewsResponse?   {
         guard let url = newsURLComponents().url else {
             // Fall back to cache if URL can't be built
-            if let cached = ArticleCache.load() { return cached }
+            if let articles = ArticleCache.load() {
+                let newsResponse = NewsResponse(
+                    status: "ok",
+                    totalResults: 999999,
+                    articles:articles)
+                return newsResponse
+            }
             return nil
         }
         print("URL:", url.absoluteString)
@@ -44,7 +50,11 @@ struct NewsServiceManager: NewsServiceManagerProtocol {
             let data = try await networkManager.fetchData(url)
             let res = try NewsDecoding.decodeResponse(from: data)
             // Persist latest successful response for offline use
-            ArticleCache.save(res)
+            if let articles = res.articles  {
+                for article in articles {
+                    ArticleCache.save(article)
+                }
+            }
             return res
         }
         catch let DecodingError.dataCorrupted(context) {
@@ -61,11 +71,16 @@ struct NewsServiceManager: NewsServiceManagerProtocol {
         }
         catch {
             print("Other error:", error)
+            throw error
         }
         // On any error, try returning cached data
-        if let cached = ArticleCache.load() {
-            return cached
-        }
+//        if let articles = ArticleCache.load() {
+//            let newsResponse = NewsResponse(
+//                status: "ok",
+//                totalResults: 999999,
+//                articles: articles)
+//            return newsResponse
+//        }
         return nil
     }
 
