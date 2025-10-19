@@ -17,7 +17,6 @@ protocol NewsViewModelProtocol: ObservableObject {
 final class NewsViewModel: NewsViewModelProtocol {
 
     private let newsService: NewsServiceManagerProtocol
-
     @Published var articles: [Article] = []
     @Published var errorMessage: String? = nil
 

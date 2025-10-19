@@ -10,7 +10,18 @@
 		F45A871A2EA2C22200E2306D /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = F45A87192EA2C22200E2306D /* SDWebImage */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		F4794D082EA4080000F490AE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F49D1E3B2EA27EA1008DAC18 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F49D1E422EA27EA1008DAC18;
+			remoteInfo = BookxpertAssignment;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		F4794D042EA4080000F490AE /* BookxpertAssignmentTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BookxpertAssignmentTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F49D1E432EA27EA1008DAC18 /* BookxpertAssignment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BookxpertAssignment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -25,6 +36,11 @@
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		F4794D052EA4080000F490AE /* BookxpertAssignmentTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = BookxpertAssignmentTests;
+			sourceTree = "<group>";
+		};
 		F49D1E452EA27EA1008DAC18 /* BookxpertAssignment */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
@@ -36,6 +52,13 @@
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		F4794D012EA4080000F490AE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F49D1E402EA27EA1008DAC18 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -51,6 +74,7 @@
 			isa = PBXGroup;
 			children = (
 				F49D1E452EA27EA1008DAC18 /* BookxpertAssignment */,
+				F4794D052EA4080000F490AE /* BookxpertAssignmentTests */,
 				F49D1E442EA27EA1008DAC18 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -59,6 +83,7 @@
 			isa = PBXGroup;
 			children = (
 				F49D1E432EA27EA1008DAC18 /* BookxpertAssignment.app */,
+				F4794D042EA4080000F490AE /* BookxpertAssignmentTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -66,6 +91,29 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		F4794D032EA4080000F490AE /* BookxpertAssignmentTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F4794D0A2EA4080000F490AE /* Build configuration list for PBXNativeTarget "BookxpertAssignmentTests" */;
+			buildPhases = (
+				F4794D002EA4080000F490AE /* Sources */,
+				F4794D012EA4080000F490AE /* Frameworks */,
+				F4794D022EA4080000F490AE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F4794D092EA4080000F490AE /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				F4794D052EA4080000F490AE /* BookxpertAssignmentTests */,
+			);
+			name = BookxpertAssignmentTests;
+			packageProductDependencies = (
+			);
+			productName = BookxpertAssignmentTests;
+			productReference = F4794D042EA4080000F490AE /* BookxpertAssignmentTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		F49D1E422EA27EA1008DAC18 /* BookxpertAssignment */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = F49D1E592EA27EA2008DAC18 /* Build configuration list for PBXNativeTarget "BookxpertAssignment" */;
@@ -99,6 +147,10 @@
 				LastSwiftUpdateCheck = 2600;
 				LastUpgradeCheck = 2600;
 				TargetAttributes = {
+					F4794D032EA4080000F490AE = {
+						CreatedOnToolsVersion = 26.0.1;
+						TestTargetID = F49D1E422EA27EA1008DAC18;
+					};
 					F49D1E422EA27EA1008DAC18 = {
 						CreatedOnToolsVersion = 26.0.1;
 					};
@@ -122,11 +174,19 @@
 			projectRoot = "";
 			targets = (
 				F49D1E422EA27EA1008DAC18 /* BookxpertAssignment */,
+				F4794D032EA4080000F490AE /* BookxpertAssignmentTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		F4794D022EA4080000F490AE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F49D1E412EA27EA1008DAC18 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -137,6 +197,13 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		F4794D002EA4080000F490AE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F49D1E3F2EA27EA1008DAC18 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -146,7 +213,120 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		F4794D092EA4080000F490AE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F49D1E422EA27EA1008DAC18 /* BookxpertAssignment */;
+			targetProxy = F4794D082EA4080000F490AE /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		F4794D0B2EA4080000F490AE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = S6ZNRH8PP3;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.oum.demo.BookxpertAssignmentTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BookxpertAssignment.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/BookxpertAssignment";
+			};
+			name = Debug;
+		};
+		F4794D0C2EA4080000F490AE /* Development */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = S6ZNRH8PP3;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.oum.demo.BookxpertAssignmentTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BookxpertAssignment.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/BookxpertAssignment";
+			};
+			name = Development;
+		};
+		F4794D0D2EA4080000F490AE /* Staging */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = S6ZNRH8PP3;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.oum.demo.BookxpertAssignmentTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BookxpertAssignment.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/BookxpertAssignment";
+			};
+			name = Staging;
+		};
+		F4794D0E2EA4080000F490AE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = S6ZNRH8PP3;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.oum.demo.BookxpertAssignmentTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BookxpertAssignment.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/BookxpertAssignment";
+			};
+			name = Release;
+		};
+		F4794D0F2EA4080000F490AE /* Production */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = S6ZNRH8PP3;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.oum.demo.BookxpertAssignmentTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BookxpertAssignment.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/BookxpertAssignment";
+			};
+			name = Production;
+		};
 		F49D1E5A2EA27EA2008DAC18 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -637,6 +817,18 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		F4794D0A2EA4080000F490AE /* Build configuration list for PBXNativeTarget "BookxpertAssignmentTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F4794D0B2EA4080000F490AE /* Debug */,
+				F4794D0C2EA4080000F490AE /* Development */,
+				F4794D0D2EA4080000F490AE /* Staging */,
+				F4794D0E2EA4080000F490AE /* Release */,
+				F4794D0F2EA4080000F490AE /* Production */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		F49D1E3E2EA27EA1008DAC18 /* Build configuration list for PBXProject "BookxpertAssignment" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

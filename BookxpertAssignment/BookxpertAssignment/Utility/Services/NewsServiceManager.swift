@@ -73,14 +73,6 @@ struct NewsServiceManager: NewsServiceManagerProtocol {
             print("Other error:", error)
             throw error
         }
-        // On any error, try returning cached data
-//        if let articles = ArticleCache.load() {
-//            let newsResponse = NewsResponse(
-//                status: "ok",
-//                totalResults: 999999,
-//                articles: articles)
-//            return newsResponse
-//        }
         return nil
     }
 

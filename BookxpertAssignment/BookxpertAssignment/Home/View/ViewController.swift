@@ -17,7 +17,7 @@ class ViewController: UIViewController {
         }
     }
     private let refreshControl = UIRefreshControl()
-    private var viewModel: NewsViewModel 
+    private var viewModel: NewsViewModel
     fileprivate let searchController = UISearchController(
         searchResultsController: nil
     )
@@ -55,10 +55,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "News"
-        
-        if self.tabBarItem.image == nil {
-            self.tabBarItem = UITabBarItem(title: "News", image: UIImage(systemName: "newspaper"), selectedImage: UIImage(systemName: "newspaper.fill"))
-        }
+        configureTabItem()
         configureTable()
         configureSearch()
         // Preload cached articles so UI shows immediately when offline
@@ -66,12 +63,16 @@ class ViewController: UIViewController {
             self.viewModel.articles = articles
             self.reloadData()
         }
-
         // Then try to fetch fresh data
         loadData()
         // Do any additional setup after loading the view.
     }
 
+    private func configureTabItem() {
+        if self.tabBarItem.image == nil {
+            self.tabBarItem = UITabBarItem(title: "News", image: UIImage(systemName: "newspaper"), selectedImage: UIImage(systemName: "newspaper.fill"))
+        }
+    }
     private func reloadData() {
         Task {
             await MainActor.run {
@@ -117,7 +118,7 @@ class ViewController: UIViewController {
             tableView?.addSubview(refreshControl)
         }
     }
-    
+
     private func configureSearch() {
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchResultsUpdater = self
@@ -126,7 +127,7 @@ class ViewController: UIViewController {
         navigationItem.hidesSearchBarWhenScrolling = false
         definesPresentationContext = true
     }
-    
+
     @objc private func handleRefresh() {
         loadData()
     }

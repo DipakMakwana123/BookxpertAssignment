@@ -2,15 +2,15 @@ import Foundation
 
 /// Root response for NewsAPI "everything" endpoint
 struct NewsResponse: Codable, Equatable {
-    public let status: String?
-    public let totalResults: Int?
-    public let articles: [Article]?
+   let status: String?
+   let totalResults: Int?
+   let articles: [Article]?
 }
 
 /// An individual article from NewsAPI
 struct Article: Codable, Equatable, Identifiable {
     // Provide a stable id synthesized from url (unique per article in NewsAPI)
-    public var id: String { url ?? UUID().uuidString }
+    var id: String { url ?? UUID().uuidString }
 
   //  public let source: Source
     let author: String?
@@ -19,6 +19,10 @@ struct Article: Codable, Equatable, Identifiable {
     let url: String?
     let urlToImage: String?
     var isBookmarked: Bool? = false
+
+    static var test: [Article] {
+       [ .init(author: "No Author", title: "No Title", url: "https://test.com", urlToImage: "https://test.com/image.jpg")]
+    }
 }
 
 
@@ -26,7 +30,7 @@ struct Article: Codable, Equatable, Identifiable {
 
 enum NewsDecoding {
     /// Shared JSONDecoder configured for NewsAPI date format (ISO8601 with fractional seconds)
-    public static var decoder: JSONDecoder = {
+    static var decoder: JSONDecoder = {
         let decoder = JSONDecoder()
         // NewsAPI uses ISO8601 dates, often with fractional seconds.
         let iso = ISO8601DateFormatter()

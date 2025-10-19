@@ -46,8 +46,6 @@ class NewsTableCell: UITableViewCell {
         let isBookmarked = article.isBookmarked ?? false
         let image = UIImage(systemName: isBookmarked ? "bookmark.fill" : "bookmark")
         btnBookmark?.setImage(image, for: .normal)
-        // Workaround for buggy ImageIO PNG decoder on indexed-color PNGs:
-        // Prefer SDWebImage's PNG coder via context and use safe decoding options.
         thumbImageView?.sd_setImage(with: url, placeholderImage: placeholder)
     }
 }

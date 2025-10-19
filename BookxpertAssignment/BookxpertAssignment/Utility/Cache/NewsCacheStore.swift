@@ -1,7 +1,6 @@
 import Foundation
 import CoreData
 
-
 final class NewsCacheStore {
     static let shared = NewsCacheStore()
     
@@ -63,10 +62,11 @@ final class NewsCacheStore {
     }
     
     func loadLatest() throws -> [Article]? {
+
         let request = CachedNews.fetchRequest(forID: "latest")
         do {
             let results = try context.fetch(request)
-            if results.isEmpty { return nil }
+            if results.isEmpty { return Article.test }
             let article = Article(
                 author: results.first?.author ?? "",
                 title: results.first?.title ?? "",

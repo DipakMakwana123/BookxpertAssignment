@@ -7,9 +7,9 @@ import Combine
 /// ```
 /// BookmarkStore.shared.toggle(id: article.id)
 /// ```
-public final class BookmarkStore: ObservableObject {
+final class BookmarkStore: ObservableObject {
     /// Shared singleton instance
-    public static let shared = BookmarkStore()
+    static let shared = BookmarkStore()
     
     /// Currently bookmarked IDs
     @Published private(set) var ids: Set<String>
@@ -27,7 +27,7 @@ public final class BookmarkStore: ObservableObject {
     /// Checks whether an ID is bookmarked
     /// - Parameter id: The identifier to check
     /// - Returns: True if bookmarked, false otherwise
-    public func isBookmarked(id: String) -> Bool {
+    func isBookmarked(id: String) -> Bool {
         ids.contains(id)
     }
     
@@ -35,7 +35,7 @@ public final class BookmarkStore: ObservableObject {
     /// If the ID is bookmarked, it will be removed; if not, it will be added.
     /// Automatically persists changes.
     /// - Parameter id: The identifier to toggle
-    public func toggle(id: String) {
+    func toggle(id: String) {
         if ids.contains(id) {
             ids.remove(id)
         } else {
@@ -48,7 +48,7 @@ public final class BookmarkStore: ObservableObject {
     /// - Parameters:
     ///   - id: The identifier to update
     ///   - isBookmarked: The desired bookmark state
-    public func update(id: String, isBookmarked: Bool) {
+    func update(id: String, isBookmarked: Bool) {
         if isBookmarked {
             ids.insert(id)
         } else {

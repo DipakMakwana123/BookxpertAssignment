@@ -20,14 +20,10 @@ final class CachedNews: NSManagedObject {
 }
 
 extension CachedNews {
-
     static let cacheRequest = NSFetchRequest<CachedNews>(entityName: "CachedNews")
 
     static func fetchRequest(forID id: String) -> NSFetchRequest<CachedNews> {
         let request = CachedNews.cacheRequest
-      //  request.predicate = NSPredicate(format: "id == %@", id)
-      //  request.predicate = NSPredicate(format: "id == %@", id)
-
         request.fetchLimit = 1
         return request
     }
