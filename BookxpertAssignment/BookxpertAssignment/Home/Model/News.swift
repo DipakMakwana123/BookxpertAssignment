@@ -21,8 +21,20 @@ struct Article: Codable, Equatable, Identifiable {
     var isBookmarked: Bool? = false
 
     static var test: [Article] {
-       [ .init(author: "No Author", title: "No Title", url: "https://test.com", urlToImage: "https://test.com/image.jpg")]
+        [ .init(author: "No Author",
+                title: "Apple releases iPhone 14 Pro Max",
+                url: "https://test.com//article1",
+                urlToImage: "https://test.com/image.jpg",
+                isBookmarked: false)]
     }
+    static var updatedBookMark: [Article] {
+        [ .init(author: "No Author",
+                title: "No Title",
+                url: "https://test.com/article1",
+                urlToImage: "https://test.com/image.jpg",
+                isBookmarked: true)]
+    }
+
 }
 
 

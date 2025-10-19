@@ -75,8 +75,8 @@ class ViewController: UIViewController {
     }
     private func reloadData() {
         Task {
-            await MainActor.run {
-                self.tableView?.reloadData()
+            await MainActor.run { [weak  self] in
+                self?.tableView?.reloadData()
             }
         }
     }
@@ -148,6 +148,8 @@ extension ViewController: UITableViewDataSource {
         }
         return cell
     }
+
+    // TODO: We can move this below code to view model, but due to API_Key Usage limitation , i am uanble to check but i added code in ViewModel  func updateBookmark which is not tested , so i have not implemented here
     private var source: [Article] {
         let isSearching = searchController.isActive && !(searchController.searchBar.text ?? "").isEmpty
         return isSearching ? viewModel.filteredArticles : viewModel.articles
@@ -164,7 +166,6 @@ extension ViewController: UITableViewDataSource {
         if let fullIndex = viewModel.articles.firstIndex(where: { ($0.url ?? $0.title) == (article.url ?? article.title) }) {
             viewModel.articles[fullIndex] = article
         }
-
         // If searching, also update filtered array element to keep UI consistent
         if isSearching {
             viewModel.filteredArticles[index] = article
@@ -186,8 +187,10 @@ extension ViewController: UITableViewDelegate {
 }
 
 extension ViewController: UISearchResultsUpdating {
+    // TODO: We can move this below code to view model, but due to API_Key Usage limitation , i am uanble to check further but i added code in ViewModel  func filterNews which is not tested , so i have not implemented here
     func updateSearchResults(for searchController: UISearchController) {
         let query = (searchController.searchBar.text ?? "").trimmingCharacters(in: .whitespacesAndNewlines)
+        //viewModel.filterNews(query)
         guard !query.isEmpty else {
             viewModel.filteredArticles = viewModel.articles
             reloadData()
