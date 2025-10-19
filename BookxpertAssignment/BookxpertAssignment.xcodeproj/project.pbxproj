@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		F45A871A2EA2C22200E2306D /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = F45A87192EA2C22200E2306D /* SDWebImage */; };
+		F494FCF02EA506610076A838 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = F494FCEF2EA506610076A838 /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -22,6 +23,7 @@
 
 /* Begin PBXFileReference section */
 		F4794D042EA4080000F490AE /* BookxpertAssignmentTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BookxpertAssignmentTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F494FCEF2EA506610076A838 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		F49D1E432EA27EA1008DAC18 /* BookxpertAssignment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BookxpertAssignment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -76,6 +78,7 @@
 				F49D1E452EA27EA1008DAC18 /* BookxpertAssignment */,
 				F4794D052EA4080000F490AE /* BookxpertAssignmentTests */,
 				F49D1E442EA27EA1008DAC18 /* Products */,
+				F494FCEF2EA506610076A838 /* README.md */,
 			);
 			sourceTree = "<group>";
 		};
@@ -191,6 +194,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F494FCF02EA506610076A838 /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
